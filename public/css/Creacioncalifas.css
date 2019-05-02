@@ -1,0 +1,134 @@
+body {
+	background: url('./Pics/Asistencia.jpg') no-repeat;
+	background-size: 100%;
+	margin-left: 1%;
+	margin-right: 1%;
+	margin-top: 0%;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+ 	 background-size: cover;
+   }
+	ul  {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		background-color: #333;
+	 }
+	 
+	 li {
+		float: left;
+	 }
+	 li p {
+		display: block;
+		color: white;
+		text-align: center;
+		padding: 0px 30px;
+		text-decoration: none;
+	 }
+	 
+	 li a {
+		display: block;
+		color: white;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+	 }
+	 
+	 li a:hover:not(.active) {
+		background-color: #111;
+	 }
+
+
+	 .footer{
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		text-align: center;
+		}
+	 #imglogo2{
+	   position: relative;
+   }
+   #imglogo2 img{
+	margin-right: 20px;
+	float: right;
+	width: 200px;
+	height: 60px;
+	opacity: .8;
+	}
+
+	
+	* {
+		box-sizing: border-box;
+	  }
+	  
+	  /* Add padding to containers */
+	  .container {
+		padding: 16px;
+		background-color: white;
+	  }
+	  
+	  /* Full-width input fields */
+	  input[type=text], input[type=password] {
+		width: 100%;
+		padding: 15px;
+		margin: 5px 0 22px 0;
+		display: inline-block;
+		border: none;
+		background: #f1f1f1;
+	  }
+	  
+	  input[type=text]:focus, input[type=password]:focus {
+		background-color: #ddd;
+		outline: none;
+	  }
+	  input[type=radio]{
+		  margin: 8px 0;
+	  }
+	  
+	  /* Overwrite default styles of hr */
+	  hr {
+		border: 1px solid #f1f1f1;
+		margin-bottom: 25px;
+	  }
+	  
+	  /* Set a style for the submit button */
+	  .registerbtn {
+		background-color: #4CAF50;
+		color: white;
+		padding: 16px 20px;
+		margin: 8px 30%;
+		border: none;
+		cursor: pointer;
+		width: 30%;
+		opacity: 0.9;
+	  }
+	  
+	  .registerbtn:hover {
+		opacity: 1;
+	  }
+	  
+	  /* Add a blue text color to links */
+	  a {
+		color: dodgerblue;
+	  }
+	  
+	  /* Set a grey background color and center the text of the "sign in" section */
+	  .signin {
+		background-color: #f1f1f1;
+		text-align: center;
+	  }
+
+    #results{
+      width: 320px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: 0;
+    }
+    
+	
+	 
+	 

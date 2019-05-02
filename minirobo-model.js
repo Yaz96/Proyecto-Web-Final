@@ -26,13 +26,23 @@ let postSchema = mongoose.Schema({
 	mensaje : {type : String, required : false},
 	dia : {type : Number, required : false},
 	mes : {type : Number, required : false},
-	autor : {type : String, required : false}
+	autor : {type : String, required : false},
+	faltas : {type : Number, required : false}
 
 });
 let Posts = mongoose.model('Posts', postSchema);
 
 
 const Listposts = {  //ListSports
+	getgrup: function(grupo){
+		return Posts.find({tipo:"historial",GrupoAct:`${grupo}`})
+		.then (posts=>{
+			return posts;
+		})
+		.catch(err => {
+			throw new Error(err);
+	   });
+	},
 	getmens : function(){
 		return Posts.find({tipo:"anuncio"})
 		.then (posts=>{
@@ -114,6 +124,35 @@ const Listposts = {  //ListSports
 				throw new Error(err);
 			})
 	},
+	putcalifas: function(body,paramsId){
+		//let status= body.active;
+
+		return Posts.findOneAndUpdate({tipo : "historial", beneficiario: paramsId  }, { $set: body })
+			.then(posts => {
+				if (posts){
+					return posts;
+				}
+				throw new Err("Post not found");
+			})
+			.catch(err =>{
+				throw new Error(err);
+			});
+		},
+	putfalta: function(body,paramsId){
+		//let status= body.active;
+
+		return Posts.findOneAndUpdate({tipo : "historial", beneficiario: paramsId  }, { $set: body }, { new: true })
+			.then(posts => {
+				if (posts){
+					return posts;
+				}
+				throw new Err("Post not found");
+			})
+			.catch(err =>{
+				throw new Error(err);
+			});
+
+},
 
 	putactive: function(body,paramsId){
 		//let status= body.active;

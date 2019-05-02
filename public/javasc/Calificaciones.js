@@ -33,7 +33,7 @@ function displayResults(data,Nivel){
 		$("#ResCalif").append( " No hay calificaciones para este nivel por el momento");
 		}
 
-		$("#ResFaltas").append(`<div> ${data.posts[0].faltas[Nivel]}  </div>`  )
+		$("#ResFaltas").append(`<div> ${data.posts[0].faltas}  </div>`  )
 		
 
 }

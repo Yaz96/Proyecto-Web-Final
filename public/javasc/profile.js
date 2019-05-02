@@ -75,7 +75,7 @@ function LoginResolution(data,boton){
 	else{ alert("Cambia de cuenta para Poder Acceder a la Asistencia") } }
 
 	if(boton=="Calificaciones"){
-		if(priv<3){ window.location.href = "Calificaciones.html";
+		if(priv<3){ window.location.href = "CalifasCreacion.html";
 	}
 	else{ alert("Cambia de cuenta para Poder Acceder a las Calificaciones") } }
 

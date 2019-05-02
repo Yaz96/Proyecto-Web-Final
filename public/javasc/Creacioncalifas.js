@@ -1,17 +1,15 @@
-var ObjFaltas = []
-var Niv;
+var ObjFaltas = [];
+var ObjCalif = [];
 
 function displayNinos(data, nivel){
 	var Objaux = [];
-	nivel = nivel.substring(0,nivel.length-1);
-	nivel = "Nivel"+nivel;
-	Niv = nivel;
+	
 
 	for (let i= 0;i<data.posts.length; i++){
 		Objaux.push(data.posts[i].beneficiario);
-		Objaux.push(data.posts[i].faltas.toString(10));
+		ObjCalif.push(data.posts[i].calificaciones);
 
-		$("#extra").append(`  <input class="ch" name="${data.posts[i].beneficiario}" type="checkbox"> ${data.posts[i].beneficiario} <br>`);
+		$("#extra").append(`  <input class="ch" id="${data.posts[i].beneficiario}" type="text"> ${data.posts[i].beneficiario} <br>`);
 	}
 	ObjFaltas = Objaux;
 
@@ -37,13 +35,13 @@ function fetchSalon(grupo){
         });
 }
 
-function createUserUpdateFetch(nombre,faltas){
+function createUserUpdateFetch(ObjCalif,nombre){
 	let data = {};
-	data.faltas = faltas;
+	data.calificaciones = ObjCalif;
 
 
 
-	url = `/minirobo/api/faltas/${nombre}`;
+	url = `/minirobo/api/califas/${nombre}`;
 	let settings = {
 		method : 'PUT',
 		headers : {
@@ -81,6 +79,7 @@ function watchForm(){ // Creates the image grid from the images that are in the 
 		event.preventDefault();
 	
 		let grupo = $("#grupo").val();
+		$("#grupo").val('');
 		fetchSalon(grupo);
 
 
@@ -91,25 +90,21 @@ function watchForm(){ // Creates the image grid from the images that are in the 
 
 	$("#BotonTerminar").on("click", function(event){
 			event.preventDefault();
-	$('#extra input:checked').each(function() {
-				selected.push($(this).attr('name'));
-			});
-	
-		
-			console.log(ObjFaltas);
-			for (let j= 0; j< selected.length; j++){
-			for(let i = 0; i<ObjFaltas.length/2; i++){ //iteracion atravez del obj de faltas
-				if( ObjFaltas[i*2]== selected[j] ){
-					ObjFaltas.splice(i*2,2);
-				}}
-		}
-		console.log(ObjFaltas);
-		for (let i= 0; i< ObjFaltas.length/2; i++){
-			let nombre = ObjFaltas[2*i];
-			let faltas= parseInt(ObjFaltas[2*i+1],10)+1;
-			createUserUpdateFetch(nombre,faltas);
-		}
-		
+			var inputs = $(".ch");
+			let Nivel = "Nivel"+$("#Nivel").val();
+			let semana = $("#semana").val();
+			for( let i=0;   i<ObjFaltas.length; i++){
+			let nombre = ObjFaltas[i];
+			let grade = $(inputs[i]).val();
+			$(inputs[i]).val('');
+			ObjCalif[0][Nivel][semana] = grade;
+			
+			//createUserUpdateFetch(ObjCalif,nombre);
+			}
+
+		$("#Nivel").val('');
+		$("#semana").val('');
+		alert("Calificaciones subidas");
 		
 	} );
 

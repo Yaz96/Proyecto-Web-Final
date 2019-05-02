@@ -1,25 +1,28 @@
 function createAnn(){
         let dia = $("#day").val();
         let mes = $("#month").val();
-        let anio = $("#year").val();
         let author = $("#ann").val();
-        let message = $(".sub").val();
+        let message = $(".mss").val();
 
 
-//----------Esta seccion es la que falta corregir------------//
+
         let data = {};
-        data.active = true;
+        data.dia = dia;
+        data.mes = mes;
+        data.autor = author;
+        data.mensaje = message;
+
     
 
-        url = `/minirobo/api/status/${email}`;
+        url = `/minirobo/api/mensaje`;
         let settings = {
-            method : 'PUT',
+            method : 'POST',
             headers : {
-                "tipo" : "anuncio"
+                "Content-Type" : "application/json"
             },
             body : JSON.stringify(data)
         };
-//----------------------------------------------------------//
+
 
 	fetch(url, settings)
     .then(response => {
@@ -30,7 +33,7 @@ function createAnn(){
         }
     })		
     .then(responseJSON => {
-        alert("Correct");
+        alert("Mensaje Enviado");
     })
     .catch(err => {
         console.log(err);
@@ -41,7 +44,6 @@ function createAnn(){
 
 
 $("#sub").click(function(e){
-    e.preventDefault();                     //Evita el refresh
-    console.log("ya llegue primera parte");                 
+    e.preventDefault();                     //Evita el refresh              
     createAnn();
 });
